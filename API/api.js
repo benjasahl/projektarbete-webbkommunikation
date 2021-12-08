@@ -4,9 +4,8 @@ const router = express.Router();
 
 const Post = require("../models/Post");
 
-const Mail = require("../mailmodels/Post");
+const Mail = require("../models/Mail");
 
-//För att hämta en funktion som finns i annan js-fil
 const { postAddedEmail } = require("../services/EmailService");
 
 router.post("/newmail", (req, res) => {

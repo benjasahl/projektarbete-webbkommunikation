@@ -11,7 +11,7 @@ const showResponseMessage = (message) => {
   }, 2000);
 };
 
-//new post
+//new mail
 const newMail = async () => {
   const firstname = document.querySelector("#contact-firstname").value;
   const email = document.querySelector("#contact-email").value;
@@ -38,7 +38,7 @@ const newMail = async () => {
 
   document.querySelector("#contact-title").value = "";
   document.querySelector("#contact-content").value = "";
-  document.querySelector("#contact-emaik").value = "";
+  document.querySelector("#contact-email").value = "";
   document.querySelector("#contact-firstname").value = "";
 };
 

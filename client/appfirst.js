@@ -39,7 +39,7 @@ const newPost = async () => {
   const content = document.querySelector("#post-content").value;
 
   const post = {
-    title, //funkar istället för "title: title", går att skriva om de heter samma
+    title, 
     content,
   };
 
