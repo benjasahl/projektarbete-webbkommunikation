@@ -4,7 +4,7 @@ const router = express.Router();
 
 const Post = require("../models/Post");
 
-const Mail = require("../models/Mail")
+const Mail = require("../mailmodels/Post");
 
 //För att hämta en funktion som finns i annan js-fil
 const { postAddedEmail } = require("../services/EmailService");
@@ -34,8 +34,6 @@ router.post("/newmail", (req, res) => {
     }
   });
 });
-
-
 
 router.post("/newpost", (req, res) => {
   console.log(req.body);
