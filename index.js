@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
 mongoose.connect(
-  "mongodb+srv://yrla:hund123@projektuppgift-wk.j2nzh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: true },
   () => console.log("Connected to db")
 );

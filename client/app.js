@@ -21,7 +21,7 @@ const newMail = async () => {
   const mail = {
     firstname,
     email,
-    title, //funkar istället för "title: title", går att skriva om de heter samma
+    title, 
     content,
   };
 
@@ -42,4 +42,3 @@ const newMail = async () => {
   document.querySelector("#contact-firstname").value = "";
 };
 
-window.addEventListener("load", newMail);
