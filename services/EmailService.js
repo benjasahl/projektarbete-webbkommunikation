@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 const nodemailerSendgrid = require("nodemailer-sendgrid");
 require("dotenv").config();
 
-//can be used in any custom email function we want to send different types of email
 const transport = nodemailer.createTransport(
   nodemailerSendgrid({
     apiKey: process.env.SENDGRID_KEY,
