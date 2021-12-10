@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Kontakt</title>
 </head>
 
 <body>
@@ -13,14 +14,19 @@
         <a href="./contact.html">Kontakt</a>
     </div>
     <form onsubmit="newMail(); return false;">
-        <h2>Contact us</h2>
+        <h2>Kontakta oss!</h2>
         <input id="contact-firstname" placeholder="Förnamn" required>
         <input id="contact-email" placeholder="Epost" required>
         <input id="contact-title" placeholder="Rubrik" required>
         <input id="contact-content" placeholder="Innehåll" required>
-        <button type="submit">Add</button>
+        <button type="submit">Skicka</button>
     </form>
-    <p id="response-message"></p>
+    <div id="msg-confirmation">
+        <span id="loader"></span>
+        
+    </div>
+
+
     <script src="./app.js"></script>
 
 </body>

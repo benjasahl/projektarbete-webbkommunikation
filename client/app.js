@@ -1,4 +1,4 @@
-//rooturl for our server 
+//rooturl for our server
 const rootURL = "http://localhost:5000/api/";
 
 let mails = [];
@@ -21,18 +21,18 @@ const newMail = async () => {
   const email = document.querySelector("#contact-email").value;
   const title = document.querySelector("#contact-title").value;
   const content = document.querySelector("#contact-content").value;
-
+  document.getElementById("msg-confirmation").style.display = "flex";
   /* creates a mail object with two properties which holds the values from the newMail function */
   const mail = {
     firstname,
     email,
-    title, 
+    title,
     content,
   };
-/*Calls the fetch function And starts a request to Our url.
+  /*Calls the fetch function And starts a request to Our url.
  We turn our mail object into json string and send it to the server. 
 When the request is completed, the promise is resolved with the response object.
-If the request fails the promise is rejected*/ 
+If the request fails the promise is rejected*/
   const res = await fetch(`${rootURL}newmail`, {
     method: "post",
     body: JSON.stringify(mail),
@@ -42,14 +42,22 @@ If the request fails the promise is rejected*/
   });
   const data = await res.json();
   console.log(data);
-  showResponseMessage(data.message.msgBody);
 
+  setTimeout(() => {
+    document.getElementById(
+      "msg-confirmation"
+    ).innerHTML = `<p id="response-message"></p>`;
+    showResponseMessage(data.message.msgBody);
+  }, 2000);
 
-// empty the inputboxes after sending an email  
+  document.getElementById(
+    "msg-confirmation"
+  ).innerHTML = `<span id="loader"></span>`;
+
+  // empty the inputboxes after sending an email
 
   document.querySelector("#contact-title").value = "";
   document.querySelector("#contact-content").value = "";
   document.querySelector("#contact-email").value = "";
   document.querySelector("#contact-firstname").value = "";
 };
-

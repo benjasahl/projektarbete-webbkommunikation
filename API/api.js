@@ -46,6 +46,8 @@ router.post("/newmail", (req, res) => {
   });
 });
 
+
+
 /*This router.post method is matched with the /newpost-url. It contains the variable "newPost" which creates 
 a newly added post by collecting the two properties values that are declared when a user fills each input 
 field in index.html. */
@@ -94,7 +96,7 @@ router.get("/getposts", (req, res) => {
           msgError: true,
         },
       });
-      res.status(200).json({ posts: documents });
+    } else {res.status(200).json({ posts: documents }); 
     }
   });
 });
