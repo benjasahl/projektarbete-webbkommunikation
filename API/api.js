@@ -8,10 +8,9 @@ const Mail = require("../models/Mail");
 
 const { postAddedEmail } = require("../services/EmailService");
 
-
 /*This router.post method is matched with the /newmail-url. It contains the variable "newMail" 
 which sends a new mail by collecting the four properties values that are declared when a user 
-fills each input field in contact.html. */ 
+fills each input field in contact.html. */
 router.post("/newmail", (req, res) => {
   console.log(req.body);
   const newMail = new Mail({
@@ -33,23 +32,23 @@ router.post("/newmail", (req, res) => {
       console.log(err);
       res.status(500).json({
         message: {
-          msgBody: "An error occured while sending email",
+          msgBody:
+            "Ett fel inträffade när meddelandet skulle skickas! Tänk på att ange en korrekt epost-adress!",
           msgError: true,
         },
       });
     } else {
       postAddedEmail(req.body);
       res.status(201).json({
-        message: { msgBody: "Mail successfully sent", msgError: false },
+        message: { msgBody: "Meddelandet har skickats!", msgError: false },
       });
     }
   });
 });
 
-
 /*This router.post method is matched with the /newpost-url. It contains the variable "newPost" which creates 
 a newly added post by collecting the two properties values that are declared when a user fills each input 
-field in index.html. */ 
+field in index.html. */
 router.post("/newpost", (req, res) => {
   console.log(req.body);
   const newPost = new Post({
@@ -68,30 +67,30 @@ router.post("/newpost", (req, res) => {
       console.log(err);
       res.status(500).json({
         message: {
-          msgBody: "An error occured while saving post",
+          msgBody:
+            "Ett fel inträffade när ett inlägg skulle skapas, tänk på att fylla i både titel och innehåll.",
           msgError: true,
         },
       });
     } else {
       res.status(201).json({
-        message: { msgBody: "Post successfully created", msgError: false },
+        message: { msgBody: "Inlägget har skapats!", msgError: false },
       });
     }
   });
 });
 
-
 /*This router.get method is matched with the /getposts url and attempts to find Post documents.
 Unless an error occurs it will respond with status code 200, and will add the documents to the posts-property.
 
 If an error occurs while finding the documents it will respond with status code 500, and a message
-will be sent stating that an error occured and the msgError boolean will be set to true. */ 
+will be sent stating that an error occured and the msgError boolean will be set to true. */
 router.get("/getposts", (req, res) => {
   Post.find({}, (err, documents) => {
     if (err) {
       res.status(500).json({
         message: {
-          msgBody: "An error occured getting posts",
+          msgBody: "Ett fel inträffade när inlägget skulle hämtas.",
           msgError: true,
         },
       });
@@ -115,22 +114,21 @@ router.put("/updatepost/:id", (req, res) => {
       if (err) {
         res.status(500).json({
           message: {
-            msgBody: "An error occured updating post",
+            msgBody: "Ett fel inträffade när inlägget skulle uppdateras.",
             msgError: true,
           },
         });
 
-/*Else it will respond with status code 200 and a message is sent stating that the post was 
+        /*Else it will respond with status code 200 and a message is sent stating that the post was 
 successfully updated, and the boolean msgError is set to false. */
       } else {
         res.status(200).json({
-          message: { msgBody: "Post successfully updated", msgError: false },
+          message: { msgBody: "Inlägget har uppdaterats!", msgError: false },
         });
       }
     }
   );
 });
-
 
 /* 
 The router.delete function is matched with the /deletepost/(specific id) url. When calling the function
@@ -144,15 +142,15 @@ router.delete("/deletepost/:id", (req, res) => {
     if (err) {
       res.status(500).json({
         message: {
-          msgBody: "An error occured deleting post",
+          msgBody: "Ett fel inträffade när inlägget skulle raderas.",
           msgError: true,
         },
       });
-/*Else it will respond with status code 200 and a message is sent stating that the post was 
+      /*Else it will respond with status code 200 and a message is sent stating that the post was 
 successfully deleted, and the boolean msgError is set to false. */
     } else {
       res.status(200).json({
-        message: { msgBody: "Post successfully deleted", msgError: false },
+        message: { msgBody: "Inlägget har raderats!", msgError: false },
       });
     }
   });

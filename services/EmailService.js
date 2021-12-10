@@ -17,12 +17,11 @@ const postAddedEmail = (mail) => {
     .sendMail({
       from: "Benjamin <yrla.hackzell@hotmail.com>",
       to: `${mail.firstname} <${mail.email}>`,
-      subject: "Message received",
-      text: `Hi, your message has been received. We will get back to you soon!`,
-      html: `<h1>Your message has been received</h1>
-                <p>Hi ${mail.firstname}, your message (${mail.title}) has been received</p>
-                <p>We will get back to you soon!</p>
-                <p>Have a great day!</p>`,
+      subject: "Meddelande mottaget",
+      html: `<h1>Ditt meddelande har mottagits</h1>
+                <p>Tjohejsan ${mail.firstname}, ditt meddelande (${mail.title}) har mottagits</p>
+                <p>Vi återkommer snarast med ett svar!</p>
+                <p>Ha en kanonfin dag, ${mail.firstname}!</p>`,
     })
     .then(() => console.log("Email sent"))
     .catch((err) => console.log(err));
