@@ -16,7 +16,7 @@ newMail function in api.js.
 const postAddedEmail = (mail) => {
   transport
     .sendMail({
-      from: "Benjamin <bensahlgren@gmail.com>",
+      from: "Benjamin <yrla.hackzell@hotmail.com>",
       to: `${mail.firstname} <${mail.email}>`,
       subject: "Message received",
       text: `Hi, your message has been received. We will get back to you soon!`,
