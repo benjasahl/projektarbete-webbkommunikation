@@ -12,12 +12,12 @@ const getPosts = async () => {
   posts = data.posts;
   /*  the data is the input from the user which we get from the database.
   when the data is returned we map over the posts and render the title and content. 
-  */  
+  */
   document.querySelector("#posts").innerHTML = posts
     .map(
       (post) => `
     <div id="posts-container">
-        <h3 id="'${post._id}'-title">${post.title}</h3>
+        <h2 id="'${post._id}'-title">${post.title}</h2>
 
         <p id="'${post._id}'-content">${post.content}</p>
 
@@ -48,7 +48,7 @@ const getPosts = async () => {
 
 /* an async function that has two variables (email, name etc) which gathers the
 values from the inputfields
- */ 
+ */
 const newPost = async () => {
   const title = document.querySelector("#post-title").value;
   const content = document.querySelector("#post-content").value;
@@ -71,7 +71,7 @@ If the request fails the promise is rejected*/
   const data = await res.json();
   console.log(data);
   getPosts();
-// empty the inputboxes after posting the post
+  // empty the inputboxes after posting the post
   document.querySelector("#post-title").value = "";
   document.querySelector("#post-content").value = "";
 };
@@ -80,7 +80,7 @@ If the request fails the promise is rejected*/
 const updatePost = async (id) => {
   const title = document.getElementById(`update-post-'${id}'-title`).value;
   const content = document.getElementById(`update-post-'${id}'-content`).value;
-/*creates a posts object with two properties which holds the values from the newMail function 
+  /*creates a posts object with two properties which holds the values from the newMail function 
 if title or content is false ( if one of the inputfield is empty) its the same as before.  */
   const post = {
     title: title ? title : document.getElementById(`'${id}'-title`).innerHTML,
@@ -101,7 +101,7 @@ if title or content is false ( if one of the inputfield is empty) its the same a
 };
 
 /*fetch sends the delete request with the id from the specific item as a parameter 
-the deletebutton from the getpostfunction calls this function.    */ 
+the deletebutton from the getpostfunction calls this function.    */
 const deletePost = async (id) => {
   const res = await fetch(`${rootURL}deletepost/${id}`, {
     method: "delete",
