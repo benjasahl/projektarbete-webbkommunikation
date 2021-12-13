@@ -22,7 +22,7 @@ const newMail = async () => {
   const title = document.querySelector("#contact-title").value;
   const content = document.querySelector("#contact-content").value;
   document.getElementById("msg-confirmation").style.display = "flex";
-  /* creates a mail object with two properties which holds the values from the newMail function */
+  /* creates a mail object with four properties which holds the values from the newMail function */
   const mail = {
     firstname,
     email,
