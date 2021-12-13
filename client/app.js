@@ -48,6 +48,7 @@ If the request fails the promise is rejected*/
       "msg-confirmation"
     ).innerHTML = `<p id="response-message"></p>`;
     showResponseMessage(data.message.msgBody);
+    
   }, 2000);
 
   document.getElementById(

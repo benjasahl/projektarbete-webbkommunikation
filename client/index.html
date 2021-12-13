@@ -5,19 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Hem</title>
 </head>
 
 <body>
-    <div class="nav"> <a href="./index.html">Hem</a>
-        <a href="./contact.html">Kontakt</a>
-    </div>
-    <form onsubmit="newPost(); return false;">
-        <h2>Publicera inlägg</h2>
-        <input id="post-title" placeholder="Rubrik" required>
-        <input id="post-content" placeholder="Innehåll" required>
-        <button type="submit">Publicera</button>
-    </form>
+    <header id="main-header">
+        <div class="nav"> <a href="./index.html">Hem</a>
+            <a href="./contact.html">Kontakt</a>
+        </div>
+    </header>
+
+    <section class="movie-section">
+        <div id="movie-container">
+            <img src="images/hobbit-one.jpg" alt="hobbit-one">
+            <img src="images/hobbit-two.jpg" alt="hobbit-two">
+            <img src="images/hobbit-three.jpg" alt="hobbit-three">
+            <img src="images/lotr-one.jpg" alt="lotr-one">
+            <img src="images/lotr-two.jpg" alt="lotr-two">
+            <img src="images/lotr-three.jpg" alt="lotr-three">
+        </div>
+    </section>
+
+
+    <section class="post-section">
+        <form onsubmit="newPost(); return false;">
+            <h2>Skriv en recension</h2>
+            <input id="post-title" placeholder="Filmtitel" required>
+            <br>
+            <input id="post-content" placeholder="Din recension..." required>
+            <br>
+            <button type="submit" id="submit-btn">Publicera</button>
+        </form>
+    </section>
+
     <p id="response-message"></p>
     <div id="posts"></div>
     <script src="./appfirst.js"></script>

@@ -3,7 +3,6 @@ const rootURL = "http://localhost:5000/api/";
 
 let posts = [];
 
-
 //get posts
 const getPosts = async () => {
   //res håller resultatet från fetch-request
@@ -14,23 +13,34 @@ const getPosts = async () => {
   document.querySelector("#posts").innerHTML = posts
     .map(
       (post) => `
-    <div>
+    <div id="posts-container">
         <h3 id="'${post._id}'-title">${post.title}</h3>
 
         <p id="'${post._id}'-content">${post.content}</p>
 
         <form onsubmit="updatePost('${post._id}'); return false">
+        <button id="edit-btn">Redigera</button>
+        <div class="edit">
+        <input id="update-post-'${post._id}'-title"  placeholder="Titel">
+        <br>
+        <input id="update-post-'${post._id}'-content"  placeholder="Recension">
+        <br>
 
-        <input id="update-post-'${post._id}'-title" placeholder="Title">
-        <input id="update-post-'${post._id}'-content" placeholder="Content">
-
-        <button type="submit">Update</button>
-        <button onclick="deletePost('${post._id}')">Delete</button>
-        </form>
+        <button type="submit">Uppdatera</button>
+        <button onclick="deletePost('${post._id}')" >Ta bort</button>
+        </form></div>
     </div>
     `
     )
     .join("");
+
+  /*const editBtn = document.getElementById("edit-btn");
+  const editContent = document.getElementsByClassName("edit");
+  for (let i = 0; i < editContent.length; i++) {
+    editBtn.addEventListener("click", () => {
+      editContent[i].style.display = "flex";
+    });
+  }*/
 };
 
 //new post
@@ -39,7 +49,7 @@ const newPost = async () => {
   const content = document.querySelector("#post-content").value;
 
   const post = {
-    title, 
+    title,
     content,
   };
 
