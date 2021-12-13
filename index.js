@@ -5,19 +5,29 @@ const cors = require("cors");
 const router = require("./api/API");
 const path = require("path");
 
-
-
+//The cors-function allows the browser/server to load external resources
 app.use(cors());
 
+//Here express-function is converted to json
 app.use(express.json());
 
+//????
 app.use("/api", router);
 
+//Here the path of the current directory merges with the path to the client directory.
 app.use(express.static(path.join(__dirname, "client")));
 
-const PORT = process.env.PORT || 5000;
+//This targets the server port which is declared in the .env-file
+const PORT = process.env.PORT;
+
+/*The listenfunction checks the connection to the server port
+and logs a message stating which port the server is running on.*/
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
+
+/* A connection is made to the MongoDB-uri, which gets logged in the
+console.
+ */
 mongoose.connect(
   process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: true },

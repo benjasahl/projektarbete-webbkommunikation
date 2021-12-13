@@ -2,6 +2,9 @@ const nodemailer = require("nodemailer");
 const nodemailerSendgrid = require("nodemailer-sendgrid");
 require("dotenv").config();
 
+/* The transport function is a standard way of sending emails
+and this collects the api-key which is found in the .env-file.
+ */
 const transport = nodemailer.createTransport(
   nodemailerSendgrid({
     apiKey: process.env.SENDGRID_KEY,
@@ -9,8 +12,9 @@ const transport = nodemailer.createTransport(
 );
 
 /*
-This function is operating sending of mail. It has a parameter called "mail" which is set in the 
-newMail function in api.js. 
+This function is operating the sending of mail. It has a parameter called "mail" which is set in the 
+newMail function in api.js. In the console log it will then be stated whether the message was sent or 
+if an error occured.
 */
 const postAddedEmail = (mail) => {
   transport
@@ -23,7 +27,7 @@ const postAddedEmail = (mail) => {
                 <p>Vi återkommer snarast med ett svar!</p>
                 <p>Ha en kanonfin dag, ${mail.firstname}!</p>`,
     })
-    .then(() => console.log("Email sent"))
+    .then(() => console.log("Meddelande skickat"))
     .catch((err) => console.log(err));
 };
 
