@@ -11,7 +11,7 @@ app.use(cors());
 //Here express-function is converted to json.
 app.use(express.json());
 
-//This matches a request to a specific route????
+//Slussar vidare till api.js filen
 app.use("/api", router);
 
 //Here the path of the current directory merges with the path to the client directory.

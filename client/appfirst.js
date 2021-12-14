@@ -3,17 +3,6 @@ const rootURL = "http://localhost:5000/api/";
 
 let posts = [];
 
-/*const movieTitle = [
-  { title: "The Hobbit: An Unexpected Journey" },
-  { title: "The Hobbit: The Desolation of Smaug" },
-  { title: "The Hobbit: The Battle of the Five Armies" },
-  { title: "The Lord of the Rings: The Fellowship of the Ring" },
-  { title: "The Lord of the Rings: The Two Towers" },
-  { title: "The Lord of the Rings: The Return of the King" },
-];
-
-const movies = document.getElementById("movie");*/
-
 const getPosts = async () => {
   //Res holds results from fetch-request
   const res = await fetch(`${rootURL}getposts`);
@@ -32,38 +21,28 @@ const getPosts = async () => {
         <p id="'${post._id}'-content">${post.content}</p>
 
         <form onsubmit="updatePost('${post._id}'); return false">
-        <button id="edit-btn">Redigera</button>
+
         <div class="edit">
         <input id="update-post-'${post._id}'-title"  placeholder="Titel">
         <br>
         <input id="update-post-'${post._id}'-content"  placeholder="Recension">
         <br>
 
-        <button type="submit">Uppdatera</button>
-        <button onclick="deletePost('${post._id}')" >Ta bort</button>
+        <button type="submit" id="submit-btn">Uppdatera</button>
+        <button onclick="deletePost('${post._id}')" id="submit-btn">Ta bort</button>
         </form></div>
     </div>
     `
     )
     .join("");
-
-  /*const editBtn = document.getElementById("edit-btn");
-  const editContent = document.getElementsByClassName("edit");
-  for (let i = 0; i < editContent.length; i++) {
-    editBtn.addEventListener("click", () => {
-      editContent[i].style.display = "flex";
-    });
-  }*/
 };
 
- /*const getTitle = () => {
-  for (let i = 0; i < movies.length; i++) {
-    movies[i].addEventListener("click", () => {
-      document.getElementById("title-header").innerHTML = movieTitle[i];
-      console.log(movieTitle[i]);
-    });
-  }
-};*/
+const toggleEdit = (id) => {
+  document
+    .getElementById(`'${id}'-edit`)
+    .classList.toggle("update-form-visible");
+};
+
 
 /* An async function that has two variables (email, name etc) which gathers the
 values from the inputfields.
@@ -130,8 +109,3 @@ const deletePost = async (id) => {
 };
 
 window.addEventListener("load", getPosts);
-
-/*window.addEventListener("load", () => {
-  getTitle();
-});
-*/
