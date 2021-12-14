@@ -3,15 +3,25 @@ const rootURL = "http://localhost:5000/api/";
 
 let posts = [];
 
-//get posts
+/*const movieTitle = [
+  { title: "The Hobbit: An Unexpected Journey" },
+  { title: "The Hobbit: The Desolation of Smaug" },
+  { title: "The Hobbit: The Battle of the Five Armies" },
+  { title: "The Lord of the Rings: The Fellowship of the Ring" },
+  { title: "The Lord of the Rings: The Two Towers" },
+  { title: "The Lord of the Rings: The Return of the King" },
+];
+
+const movies = document.getElementById("movie");*/
+
 const getPosts = async () => {
-  //res holds results from fetch-request
+  //Res holds results from fetch-request
   const res = await fetch(`${rootURL}getposts`);
-  //data turns result into json
+  //Data turns result into json
   const data = await res.json();
   posts = data.posts;
-  /*  the data is the input from the user which we get from the database.
-  when the data is returned we map over the posts and render the title and content. 
+  /*  The data is the input from the user which we get from the database.
+  When the data is returned we map over the posts and render the title and content in the posts-div. 
   */
   document.querySelector("#posts").innerHTML = posts
     .map(
@@ -46,18 +56,27 @@ const getPosts = async () => {
   }*/
 };
 
-/* an async function that has two variables (email, name etc) which gathers the
-values from the inputfields
+ /*const getTitle = () => {
+  for (let i = 0; i < movies.length; i++) {
+    movies[i].addEventListener("click", () => {
+      document.getElementById("title-header").innerHTML = movieTitle[i];
+      console.log(movieTitle[i]);
+    });
+  }
+};*/
+
+/* An async function that has two variables (email, name etc) which gathers the
+values from the inputfields.
  */
 const newPost = async () => {
   const title = document.querySelector("#post-title").value;
   const content = document.querySelector("#post-content").value;
-  /* creates a post object with two properties which holds the values from the newPost function */
+  /* Creates a post object with two properties which holds the values from the newPost function */
   const post = {
     title,
     content,
   };
-  /*Calls the fetch function And starts a request to Our url.
+  /*Calls the fetch function and starts a request to our url.
  We turn our mail object into json string and send it to the server. 
 When the request is completed, the promise is resolved with the response object.
 If the request fails the promise is rejected*/
@@ -71,16 +90,16 @@ If the request fails the promise is rejected*/
   const data = await res.json();
   console.log(data);
   getPosts();
-  // empty the inputboxes after posting the post
+  // Empty the inputboxes after posting the post
   document.querySelector("#post-title").value = "";
   document.querySelector("#post-content").value = "";
 };
 
-/* find the specific post byh using the id and update title and content*/
+/* Find the specific post by using the id and update title and content*/
 const updatePost = async (id) => {
   const title = document.getElementById(`update-post-'${id}'-title`).value;
   const content = document.getElementById(`update-post-'${id}'-content`).value;
-  /*creates a posts object with two properties which holds the values from the newMail function 
+  /*Creates a posts object with two properties which holds the values from the newMail function 
 if title or content is false ( if one of the inputfield is empty) its the same as before.  */
   const post = {
     title: title ? title : document.getElementById(`'${id}'-title`).innerHTML,
@@ -100,8 +119,8 @@ if title or content is false ( if one of the inputfield is empty) its the same a
   getPosts();
 };
 
-/*fetch sends the delete request with the id from the specific item as a parameter 
-the deletebutton from the getpostfunction calls this function.    */
+/*Fetch sends the delete request with the id from the specific item as a parameter,  
+and the deletebutton from the getpostfunction calls this function.    */
 const deletePost = async (id) => {
   const res = await fetch(`${rootURL}deletepost/${id}`, {
     method: "delete",
@@ -111,3 +130,8 @@ const deletePost = async (id) => {
 };
 
 window.addEventListener("load", getPosts);
+
+/*window.addEventListener("load", () => {
+  getTitle();
+});
+*/

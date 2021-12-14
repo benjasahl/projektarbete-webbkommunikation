@@ -12,7 +12,7 @@ const transport = nodemailer.createTransport(
 );
 
 /*
-This function is operating the sending of mail. It has a parameter called "mail" which is set in the 
+This function is operating the sending of email. It has a parameter called "mail" which is set in the 
 newMail function in api.js. In the console log it will then be stated whether the message was sent or 
 if an error occured.
 */

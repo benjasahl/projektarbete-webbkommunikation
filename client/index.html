@@ -19,12 +19,12 @@
 
     <section class="movie-section">
         <div id="movie-container">
-            <img src="images/hobbit-one.jpg" alt="hobbit-one">
-            <img src="images/hobbit-two.jpg" alt="hobbit-two">
-            <img src="images/hobbit-three.jpg" alt="hobbit-three">
-            <img src="images/lotr-one.jpg" alt="lotr-one">
-            <img src="images/lotr-two.jpg" alt="lotr-two">
-            <img src="images/lotr-three.jpg" alt="lotr-three">
+            <img src="images/hobbit-one.jpg" alt="hobbit-one" id="movie">
+            <img src="images/hobbit-two.jpg" alt="hobbit-two" id="movie">
+            <img src="images/hobbit-three.jpg" alt="hobbit-three" id="movie">
+            <img src="images/lotr-one.jpg" alt="lotr-one" id="movie">
+            <img src="images/lotr-two.jpg" alt="lotr-two" id="movie">
+            <img src="images/lotr-three.jpg" alt="lotr-three" id="movie">
         </div>
     </section>
 
@@ -32,6 +32,7 @@
     <section class="post-section">
         <form onsubmit="newPost(); return false;">
             <h2>Skriv en recension</h2>
+            <h3 id="title-header"></h3>
             <input id="post-title" placeholder="Filmtitel" required>
             <br>
             <input id="post-content" placeholder="Din recension..." required>

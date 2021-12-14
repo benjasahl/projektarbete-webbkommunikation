@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 /* 
 This creates an instance of a Schema constructor. 
 The ”pattern” of the schema is then used to define the schema with four properies, all in string type. 
-the boolean required is true and and therefore the user has to input the value for the function to work
+The boolean required is true and and therefore the user has to input the value for the function to work
 */
 const MailSchema = mongoose.Schema({
   firstname: {
@@ -26,8 +26,8 @@ const MailSchema = mongoose.Schema({
 });
 
 /* 
-creates a model for our schema and exports so files has access to the model 
+Creates a model for our schema and exports so files has access to the model. 
 The first parameter of the model is the name of the collection that will contain the documents.
-the second parameter is the schema  */
+The second parameter is the schema  */
 
 module.exports = mongoose.model("Mail", MailSchema);

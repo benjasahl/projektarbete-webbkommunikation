@@ -4,16 +4,17 @@ const rootURL = "http://localhost:5000/api/";
 let mails = [];
 
 /*
-function to show responsemessage, the setTimeout function then removes
+Function to set the responsemessage, the setTimeout function then removes
  the message after 2 seconds  */
 const showResponseMessage = (message) => {
   document.querySelector("#response-message").innerHTML = message;
   setTimeout(() => {
     document.querySelector("#response-message").innerHTML = "";
+    document.getElementById("msg-confirmation").style.display = "none";
   }, 2000);
 };
 
-/* an async function that has four variables (email, name etc) which gathers the
+/* An async function that has four variables (email, name etc) which gathers the
 values from the inputfields
  */
 const newMail = async () => {
@@ -22,14 +23,14 @@ const newMail = async () => {
   const title = document.querySelector("#contact-title").value;
   const content = document.querySelector("#contact-content").value;
   document.getElementById("msg-confirmation").style.display = "flex";
-  /* creates a mail object with four properties which holds the values from the newMail function */
+  /* Creates a mail object with four properties which holds the values from the newMail function */
   const mail = {
     firstname,
     email,
     title,
     content,
   };
-  /*Calls the fetch function And starts a request to Our url.
+  /*Calls the fetch function and starts a request to our url.
  We turn our mail object into json string and send it to the server. 
 When the request is completed, the promise is resolved with the response object.
 If the request fails the promise is rejected*/
@@ -41,21 +42,22 @@ If the request fails the promise is rejected*/
     },
   });
   const data = await res.json();
-  console.log(data);
 
+  /*This setTimeout function targets the msg-confirmation div and changes the innerHTML
+  from showing the loader to showing the response message after 2 seconds.*/
   setTimeout(() => {
     document.getElementById(
       "msg-confirmation"
     ).innerHTML = `<p id="response-message"></p>`;
     showResponseMessage(data.message.msgBody);
-    
   }, 2000);
 
+  //Resets the innerHTML of the msg-confirmation div to contain the loader.
   document.getElementById(
     "msg-confirmation"
   ).innerHTML = `<span id="loader"></span>`;
 
-  // empty the inputboxes after sending an email
+  // Empty the inputboxes after sending an email
 
   document.querySelector("#contact-title").value = "";
   document.querySelector("#contact-content").value = "";

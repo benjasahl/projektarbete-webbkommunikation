@@ -9,7 +9,7 @@ const Mail = require("../models/Mail");
 const { postAddedEmail } = require("../services/EmailService");
 
 /*This router.post method is matched with the /newmail-url. It contains the variable "newMail" 
-which sends a new mail by collecting the four properties values that are declared when a user 
+which sends a new mail by collecting the four property values that are declared when a user 
 fills each input field in contact.html. */
 router.post("/newmail", (req, res) => {
   console.log(req.body);
@@ -29,7 +29,6 @@ router.post("/newmail", (req, res) => {
   is sent stating that the mail was successfully sent, and the boolean msgError is set to false. */
   newMail.save((err) => {
     if (err) {
-      console.log(err);
       res.status(500).json({
         message: {
           msgBody:
@@ -52,7 +51,6 @@ router.post("/newmail", (req, res) => {
 a newly added post by collecting the two properties values that are declared when a user fills each input 
 field in index.html. */
 router.post("/newpost", (req, res) => {
-  console.log(req.body);
   const newPost = new Post({
     title: req.body.title,
     content: req.body.content,
@@ -66,7 +64,6 @@ router.post("/newpost", (req, res) => {
   successfully created, and the boolean msgError is set to false. */
   newPost.save((err) => {
     if (err) {
-      console.log(err);
       res.status(500).json({
         message: {
           msgBody:
@@ -101,7 +98,7 @@ router.get("/getposts", (req, res) => {
   });
 });
 
-/* The router.put function is matched with the /updatepost/(specific id) url. When calling the function
+/* The router.put function is matched with the /updatepost/(specific post-id) url. When calling the function
 it will look through the posts to find the specific post-id, and update it's property values in accordance
 to the changed value.
 
@@ -133,7 +130,7 @@ successfully updated, and the boolean msgError is set to false. */
 });
 
 /* 
-The router.delete function is matched with the /deletepost/(specific id) url. When calling the function
+The router.delete function is matched with the /deletepost/(specific post-id) url. When calling the function
 it will look after the specific post-id and delete it.
 
 The if-condition checks if an error occurs. If error is true it will respond with a status code 500 
