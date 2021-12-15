@@ -37,13 +37,6 @@ const getPosts = async () => {
     .join("");
 };
 
-const toggleEdit = (id) => {
-  document
-    .getElementById(`'${id}'-edit`)
-    .classList.toggle("update-form-visible");
-};
-
-
 /* An async function that has two variables (email, name etc) which gathers the
 values from the inputfields.
  */
